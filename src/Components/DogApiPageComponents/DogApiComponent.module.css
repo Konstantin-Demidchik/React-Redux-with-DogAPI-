@@ -1,0 +1,48 @@
+.search_content_dogapi {
+  background-color: #eee;
+  margin: 50px 50px;
+  padding: auto;
+  font-family: ubuntu mono,monospace;
+  font-size: 18px;
+
+}
+
+.title_media_dogapi {
+  width: 100%;
+  background-color: #333;
+  height: 600px;
+}
+.select_button {
+  background-color: #fff !important;
+  background-image: none;
+  height: 40px;
+  width: calc(40% - 80px);
+  margin: 0px 4px 0px 4px;
+}
+
+@media (max-width: 767px) {
+  .select_button {
+    width: 100%
+  }
+}
+
+
+.fetch_button {
+  position: relative;
+  height: 100%;
+  margin-top: 0px !important;
+  width: 100%;
+}
+
+.photo_list {
+  list-style-type: none;
+}
+
+.photo_list li{
+  margin-bottom: 10px;
+  float: left;
+}
+
+.photo_list li img{
+  height: 300px;
+}

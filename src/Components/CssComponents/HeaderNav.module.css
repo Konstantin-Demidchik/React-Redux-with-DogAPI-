@@ -1,0 +1,13 @@
+.navbar {
+  margin-bottom: 0px !important;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  background-image: none;
+  background-color: transparent;
+  color: black !important;
+  border: none;
+}
+.navbar a {
+  color: white !important;
+}

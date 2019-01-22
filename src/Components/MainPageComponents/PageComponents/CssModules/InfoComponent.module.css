@@ -1,0 +1,12 @@
+.info_container {
+  background-image: url(https://files3.adme.ru/files/news/part_143/1438015/21468315-cover61-1140x570-1484308266-650-7c48ec1b51-1484573269.jpg);
+  width: 100%;
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-color: #2e3a44;
+  background-attachment: fixed;
+}
+.info_content {
+  padding: 7%;
+  color: #fafafa;
+}
