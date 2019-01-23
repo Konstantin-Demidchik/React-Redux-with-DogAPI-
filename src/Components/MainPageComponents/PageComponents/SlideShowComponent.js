@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import {Carousel} from 'react-bootstrap'
 
+
+
 class SlideShow extends Component {
   render() {
     return (

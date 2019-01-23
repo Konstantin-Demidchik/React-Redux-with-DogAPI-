@@ -10,29 +10,32 @@ import styles from './DogApiComponent.module.css'
 
 class DogApiComponent extends Component {
   state = {
-    dogArray: null,
+    arrayPhotoDogs: null,
     arrayNamesDogs: null
   }
 
-  getDogs = () => {
-    this.props.gettingPhotoDogs.then( p => this.setState({dogArray: p.map( (photo) =><Col xs={12} md={4}><li><img src = {photo} width = "300px"/></li></Col>)}));
-//    console.log(Dog.then(p => console.log(p)));
-//    this.setState({dogArray: Dog.map( (photo) => <li><img src = {photo} width = "300px"/></li>)})
+  fillingArrayPhotoDogs = () => {
+    this.props.gettingPhotoDogs.then( photo => this.setState({
+      arrayPhotoDogs: photo.map( (link_photo) =>
+        <Col xs={12} md={4}>
+            <li><img src = {link_photo} width = "300px"/></li>
+        </Col>
+      )}));
   }
 
   fillingArrayNamesDogs = async () => {
     let namesObject;
     let namesArray = [];
-      await this.props.libraryDog.then((response) => namesObject = response);
+    await this.props.libraryDog.then((names) => namesObject = names);
 
-    for(let key in namesObject)
-      namesArray.push(<option value = {key}>{key}</option>);
+    for(let name in namesObject)
+      namesArray.push(<option value = {name}>{name}</option>);
 
     this.setState({arrayNamesDogs: namesArray});
   }
 
   handleChangeInSelectButton = (event) => {
-    this.props.WriteNewValueOnSearch(event.target.value);
+    this.props.WriteNewValueOnURL(event.target.value);
   }
 
 
@@ -48,32 +51,29 @@ class DogApiComponent extends Component {
       <div>
          <div className = {styles.title_media_dogapi}></div>
               <Grid>
-
                   <Row className="show-grid">
 
                     <Panel className = {styles.search_content_dogapi}>
                         <Panel.Body>
+
                           <Col xs={12} md={9}>
-
-                          <span>
+                            <span>
                               https://dog.ceo/api/breed/
-                          <select className = {styles.select_button} onChange = {this.handleChangeInSelectButton}>
-                          {this.state.arrayNamesDogs}
-                          </select>
-                          /images/random
-                          </span>
 
-                            </Col>
+                              <select className = {styles.select_button} onChange = {this.handleChangeInSelectButton}>{this.state.arrayNamesDogs}</select>
+                              /images/random
+                            </span>
 
+                         </Col>
 
                             <Col xs={12} md={3}>
-                            <button className = {styles.fetch_button} onClick = {this.getDogs}>Fetch!</button>
+                                <button className = {styles.fetch_button} onClick = {this.fillingArrayPhotoDogs}>Fetch!</button>
                             </Col>
                         </Panel.Body>
-                    </Panel>
+                     </Panel>
 
                     <Row>
-                          <ul className = {styles.photo_list}>{this.state.dogArray }</ul>
+                        <ul className = {styles.photo_list}>{this.state.arrayPhotoDogs }</ul>
                     </Row>
 
             </Row>
@@ -90,7 +90,7 @@ export default connect(
   },
   dispatch => {
     return{
-      WriteNewValueOnSearch:(name) => dispatch({type:'CHANGE_ARRAY_PHOTOS', payload: name })
+      WriteNewValueOnURL:(name) => dispatch({type:'CHANGE_ARRAY_PHOTOS', payload: name })
     }
   }
 )(DogApiComponent);

@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 import MainPageComponent from './Components/MainPageComponents/MainPageComponent'
 import DogApiComponent from './Components/DogApiPageComponents/DogApiComponent'
-import ChatComponent from './Components/ChatComponent'
-import HeaderNav from './Components/HeaderNav'
+import ChatComponent from './Components/ChatPageComponents/ChatComponent'
+import HeaderNav from './Components/HeaderNav/HeaderNav'
 
 import {Route, BrowserRouter} from 'react-router-dom'
 

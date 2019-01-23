@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Grid, Row, Col} from 'react-bootstrap'
-import styles from './CssModules/InfoComponent.module.css'
+import styles from './CssModulesMainPage/InfoComponent.module.css'
 
 class InfoComponent extends Component {
 

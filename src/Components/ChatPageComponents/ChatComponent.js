@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-
+import styles from './ChatComponent.module.css'
 
 
 

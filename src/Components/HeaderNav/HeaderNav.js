@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Navbar,NavItem, NavDropdown, MenuItem, Nav} from 'react-bootstrap'
-import styles from './CssComponents/HeaderNav.module.css'
+import styles from './HeaderNav.module.css'
 
 
 class HeaderNav extends Component {
@@ -24,26 +24,19 @@ class HeaderNav extends Component {
 
   render() {
     return (
-          <Navbar className = {this.state.classOnScroll}>
+        <Navbar className = {this.state.classOnScroll}>
 
-            <Navbar.Header>
-              <Navbar.Brand>
+          <Navbar.Header>
+            <Navbar.Brand>
               <a href="/">Главная</a>
               </Navbar.Brand>
-            </Navbar.Header>
+          </Navbar.Header>
 
            <Nav>
             <NavItem eventKey={1} href="/dogapi">DOG API</NavItem>
             <NavItem eventKey={2} href="/chat">Чат</NavItem>
-
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1} >Action</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-              <MenuItem eventKey={3.3}>Something else here</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={3.4}>Separated link</MenuItem>
-            </NavDropdown>
           </Nav>
+
        </Navbar>
     )
   }

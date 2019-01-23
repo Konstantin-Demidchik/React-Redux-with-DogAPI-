@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Media, Image} from 'react-bootstrap'
-import styles from './CssModules/AboutComponent.module.css'
+import styles from './CssModulesMainPage/AboutComponent.module.css'
 import {PageHeader} from 'react-bootstrap'
 
 
@@ -11,17 +11,18 @@ class DescribeComponent extends Component {
     return(
       <div className = 'container'>
 
-          <PageHeader>Какие они бывают? <small>о собаках</small></PageHeader>
+        <PageHeader>Какие они бывают? <small>о собаках</small></PageHeader>
 
-          <div className = {styles.media_space}>
-          <Media>
+        <div className = {styles.media_space}>
+
+            <Media>
 
                  <Media.Left>
                     <Image width={150} height={150} src="https://billionnews.ru/uploads/posts/2017-06/thumbs/1496736225_3.jpg" circle />
                  </Media.Left>
 
                  <Media.Body>
-                     <Media.Heading>Померанский шпиц</Media.Heading>
+                    <Media.Heading>Померанский шпиц</Media.Heading>
                        <p>
                         Относится к категории декоративных собак.
                         У него маленькая мордочка и мягчайшая шерсть, размеры собаки тоже крайне небольшие.
@@ -31,7 +32,8 @@ class DescribeComponent extends Component {
                         Эта миниатюрная и красивая собачка отличается дружелюбием, преданностью своему хозяину, подвижностью и игривостью, что делает ее замечательным компаньоном.
                        </p>
                  </Media.Body>
-               </Media>
+                 
+            </Media>
 
           <Media className = {styles.media_space}>
                <Media.Body>

@@ -4,24 +4,14 @@ import './index.css';
 import App from './App';
 import { Provider} from 'react-redux';
 import {createStore} from 'redux';
+import reducerApp from './reducers'
 
 
 
-const getRequestOnPhotoDogs = async (n) => {
-  const apiDog = await fetch(`https://dog.ceo/api/breed/${n}/images`)
-  .then(response => response.json());
-    return apiDog.message;
-}
-
-const getLibraryDogs = async () => {
-  const library = await fetch(`https://dog.ceo/api/breeds/list/all`)
-  .then(response => response.json());
-
-  return library.message;
-}
 
 
-const initialState = {
+
+/*const initialState = {
   gettingPhotoDogs: getRequestOnPhotoDogs('affenpinscher'),
   libraryDog: getLibraryDogs()
 }
@@ -36,9 +26,9 @@ function reducer(state = initialState, action) {
 
   }
   return state;
-}
+} */
 
-const store = createStore(reducer);
+const store = createStore(reducerApp);
 
 ReactDOM.render(<Provider store = {store}><App /></Provider>, document.getElementById('root'));
 
