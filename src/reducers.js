@@ -1,44 +1,39 @@
 import { combineReducers } from 'redux'
+import {GET_NEW_ARRAY_PHOTO} from './action.js'
+
+import {getResponsePhotoDogs, getLibraryNamesDogs} from './fetchDogApi.js'
 
 
-const getRequestOnPhotoDogs = async (n) => {
-  const apiDog = await fetch(`https://dog.ceo/api/breed/${n}/images`)
-  .then(response => response.json());
-    return apiDog.message;
-}
-
-const getLibraryDogs = async () => {
-  const library = await fetch(`https://dog.ceo/api/breeds/list/all`)
-  .then(response => response.json());
-
-  return library.message;
-}
 
 const initialState = {
-  gettingPhotoDogs: getRequestOnPhotoDogs('affenpinscher'),
-  libraryDog: getLibraryDogs()
+  gettingPhotoDogs: getResponsePhotoDogs('affenpinscher'),
+  libraryDog: getLibraryNamesDogs()
 }
 
-
-
-
-
 function dogApiReducer(state = initialState, action) {
-  if(action.type === 'CHANGE_ARRAY_PHOTOS') {
-
+  if(action.type === GET_NEW_ARRAY_PHOTO) {
     return {
       ...state,
-      gettingPhotoDogs: getRequestOnPhotoDogs(action.payload)
+      gettingPhotoDogs: getResponsePhotoDogs(action.payload)
     }
 
   }
-  return state;
+    return state;
 }
+
 
 function chatApiReducer(state = {}, action) {
   return state;
 }
 
 
+const mainReducer = combineReducers({
+  dogApiReducer,
+  chatApiReducer
+})
 
-export default dogApiReducer;
+
+
+
+
+export default mainReducer;

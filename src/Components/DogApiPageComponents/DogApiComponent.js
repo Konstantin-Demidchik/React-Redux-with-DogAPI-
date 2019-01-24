@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {Grid, Row, Col, Panel, DropdownButton, MenuItem} from 'react-bootstrap'
+import {Grid, Row, Col, Panel} from 'react-bootstrap'
 
 import styles from './DogApiComponent.module.css'
 
@@ -15,11 +15,13 @@ class DogApiComponent extends Component {
   }
 
   fillingArrayPhotoDogs = () => {
-    this.props.gettingPhotoDogs.then( photo => this.setState({
-      arrayPhotoDogs: photo.map( (link_photo) =>
+    this.props.gettingPhotoDogs.then( photo =>
+      this.setState({arrayPhotoDogs: photo.map( (link_photo) =>
+        <div key = {link_photo}>
         <Col xs={12} md={4}>
-            <li><img src = {link_photo} width = "300px"/></li>
+            <li key={link_photo}><img src = {link_photo} width = "300px" alt = {link_photo}/></li>
         </Col>
+        </div>
       )}));
   }
 
@@ -86,11 +88,11 @@ class DogApiComponent extends Component {
 
 export default connect(
   state => {
-    return {gettingPhotoDogs: state.gettingPhotoDogs, libraryDog: state.libraryDog}
+    return {gettingPhotoDogs: state.dogApiReducer.gettingPhotoDogs, libraryDog: state.dogApiReducer.libraryDog}
   },
   dispatch => {
     return{
-      WriteNewValueOnURL:(name) => dispatch({type:'CHANGE_ARRAY_PHOTOS', payload: name })
+      WriteNewValueOnURL:(name) => dispatch({type:'GET_NEW_ARRAY_PHOTO', payload: name })
     }
   }
 )(DogApiComponent);

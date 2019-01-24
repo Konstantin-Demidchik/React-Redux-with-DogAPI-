@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import styled from 'styled-components';
 
 import MainPageComponent from './Components/MainPageComponents/MainPageComponent'
 import DogApiComponent from './Components/DogApiPageComponents/DogApiComponent'
