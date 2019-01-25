@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Grid, Row, Col, Panel} from 'react-bootstrap'
 
 import styles from './DogApiComponent.module.css'
-
+import {getNewArrayPhoto} from '../../action.js'
 
 
 
@@ -65,7 +65,6 @@ class DogApiComponent extends Component {
                               <select className = {styles.select_button} onChange = {this.handleChangeInSelectButton}>{this.state.arrayNamesDogs}</select>
                               /images/random
                             </span>
-
                          </Col>
 
                             <Col xs={12} md={3}>
@@ -86,13 +85,20 @@ class DogApiComponent extends Component {
   }
 }
 
-export default connect(
-  state => {
-    return {gettingPhotoDogs: state.dogApiReducer.gettingPhotoDogs, libraryDog: state.dogApiReducer.libraryDog}
-  },
-  dispatch => {
-    return{
-      WriteNewValueOnURL:(name) => dispatch({type:'GET_NEW_ARRAY_PHOTO', payload: name })
-    }
+const mapStateToProps = (state) => {
+  return {
+    gettingPhotoDogs: state.dogApiReducer.gettingPhotoDogs, libraryDog: state.dogApiReducer.libraryDog
   }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    WriteNewValueOnURL:(name) => dispatch(getNewArrayPhoto(name))
+  }
+}
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(DogApiComponent);
